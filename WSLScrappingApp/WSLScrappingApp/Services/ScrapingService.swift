@@ -26,7 +26,8 @@ class ScrapingService {
             let name = try! athlete.select(".athlete-name").text()
             let country = try! athlete.select(".athlete-country-name").text()
             let category = try! athlete.select(".avatar-text-tertiary").text()
-            let athlete = AthleteModel(id: UUID(), name: name, country: country, category: category)
+            let imgURL = try! athlete.select("a").attr("data-img-src")
+            let athlete = AthleteModel(id: UUID(), name: name, country: country, category: category, imageURL: imgURL)
             athletes.append(athlete)
         }
         

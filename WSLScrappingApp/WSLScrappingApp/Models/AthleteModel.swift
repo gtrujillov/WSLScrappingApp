@@ -12,16 +12,19 @@ struct AthleteModel: Identifiable {
     var name: String
     var country: String
     var category: String
+    let imageURL: String
     
     init(
         id: UUID,
         name: String,
         country: String,
-        category: String
+        category: String,
+        imageURL: String
     ) {
         self.id = id
         self.name = name
         self.country = country
         self.category = category
+        self.imageURL = imageURL
     }
 }

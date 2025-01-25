@@ -15,22 +15,26 @@ struct AthletesView: View {
         NavigationView {
             VStack {
                 if viewModel.isLoading {
-                    ProgressView("Cargando atletas...") // Indicador de carga
+                    ProgressView("Cargando atletas...")
                         .progressViewStyle(CircularProgressViewStyle())
                         .padding()
                 } else {
-                    List(viewModel.athletes, id: \.name) { athlete in
-                        VStack(alignment: .leading) {
-                            Text(athlete.name)
-                                .font(.headline)
-                            Text(athlete.country)
-                                .font(.subheadline)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack(spacing: 25) {
+                            ForEach(viewModel.athletes, id: \.name) { athlete in
+                                AthleteCardView(
+                                    athleteName: athlete.name,
+                                    country: athlete.country,
+                                    category: athlete.category,
+                                    surferImage: athlete.imageURL
+                                )
+                            }
                         }
-                        .padding(.vertical, 8)
+                        .padding()
                     }
                 }
             }
-            .navigationTitle("Atletas de WSL")
+            .navigationTitle("Surfistas de WSL")
             .onAppear {
                 Task {
                     await viewModel.loadAthletes()
