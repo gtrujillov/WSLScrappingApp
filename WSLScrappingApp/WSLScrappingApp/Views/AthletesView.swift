@@ -32,7 +32,6 @@ struct AthletesView: View {
             }
             .navigationTitle("Atletas de WSL")
             .onAppear {
-                // Llamamos a la función loadAthletes cuando la vista aparece
                 Task {
                     await viewModel.loadAthletes()
                 }
