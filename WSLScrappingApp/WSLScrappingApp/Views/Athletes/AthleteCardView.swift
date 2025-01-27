@@ -19,7 +19,8 @@ struct AthleteCardView: View {
         NavigationLink(destination: AthleteDetailView(
             detailUrl: $detailUrl,
             surferAvatarImg: $surferImage,
-            name: $athleteName
+            name: $athleteName,
+            hometown: $country
         )) {
             ZStack {
                 // MARK: - Card background
@@ -41,28 +42,12 @@ struct AthleteCardView: View {
                         Circle()
                             .fill(Color.white)
                             .frame(width: 200, height: 200)
-                        AsyncImage(url: URL(string: surferImage ?? "")) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 190, height: 190)
-                                    .clipShape(Circle())
-                                    .foregroundStyle(.colorGreenLight)
-                                    .shadow(radius: 5)
-                            case .failure:
-                                Image(systemName: "person.circle.fill")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 120, height: 120)
-                                    .foregroundColor(.gray)
-                            @unknown default:
-                                EmptyView()
-                            }
-                        }
+                        CustomAsyncImage(
+                            url: surferImage,
+                            width: 190,
+                            height: 190
+                        )
+                        .clipShape(.circle)
                     }
                     .frame(width: 120, height: 120)
                     .padding(.bottom, 8)
