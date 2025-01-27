@@ -1,0 +1,7 @@
+# Archivos generados por Xcode
+*.xcodeproj/project.xcworkspace
+*.xcuserstate
+*.xcscheme
+*.xcodeproj/xcuserdata
+*.xcworkspace/xcuserdata
+*.xscurdata
