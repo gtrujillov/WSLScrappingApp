@@ -10,16 +10,16 @@ import SwiftUI
 struct CustomBackgroundView: View {
     var body: some View {
         ZStack {
-            Color.colorGreenDark
+            Color.colorGrayMedium
                 .cornerRadius(40)
                 .offset(y: 12)
-            Color.colorGreenLight
+            Color.colorGrayLight
                 .cornerRadius(40)
                 .offset(y: 3)
                 .opacity(0.85)
             LinearGradient(
                 colors: [
-                    Color.colorGreenDark,
+                    Color.colorGreenMedium,
                     Color.colorGreenMedium
                 ],
                 startPoint: .top,

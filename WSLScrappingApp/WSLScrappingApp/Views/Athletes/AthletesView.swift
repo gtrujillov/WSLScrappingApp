@@ -20,21 +20,22 @@ struct AthletesView: View {
                         .padding()
                 } else {
                     ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack(spacing: 25) {
+                        LazyHStack(spacing: 5) {
                             ForEach(viewModel.athletes, id: \.name) { athlete in
                                 AthleteCardView(
                                     athleteName: athlete.name,
                                     country: athlete.country,
                                     category: athlete.category,
-                                    surferImage: athlete.imageURL
+                                    surferImage: athlete.imageURL,
+                                    detailUrl: athlete.detailUrl
                                 )
+                                .padding()
                             }
                         }
                         .padding()
                     }
                 }
             }
-            .navigationTitle("Surfistas de WSL")
             .onAppear {
                 Task {
                     await viewModel.loadAthletes()
